@@ -19,9 +19,9 @@ npm install
 ```
 DB_HOST=localhost
 DB_PORT=5432
-DB_USERNAME=fumindo_test
-DB_PASSWORD=fumindo_123
-DB_NAME=asset_fumindo
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
 NODE_ENV=development
 ```
 
