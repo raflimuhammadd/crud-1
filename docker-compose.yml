@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: asset_fumindo_db
+    environment:
+      POSTGRES_USER: fumindo_test
+      POSTGRES_PASSWORD: fumindo_123
+      POSTGRES_DB: asset_fumindo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - asset_network
+
+  backend:
+    build: ./backend
+    container_name: asset_fumindo_backend
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: fumindo_test
+      DB_PASSWORD: fumindo_123
+      DB_NAME: asset_fumindo
+      NODE_ENV: development
+    depends_on:
+      - postgres
+    networks:
+      - asset_network
+    volumes:
+      - ./backend:/app/backend
+      - /app/backend/node_modules
+    command: npm run start:dev
+
+volumes:
+  postgres_data:
+
+networks:
+  asset_network:
+    driver: bridge
