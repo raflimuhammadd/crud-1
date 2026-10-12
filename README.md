@@ -80,6 +80,20 @@ curl -X PUT http://localhost:3000/assets/1 \
 curl -X DELETE http://localhost:3000/assets/1
 ```
 
+**Response Codes:**
+- `204 No Content` - Asset successfully deleted
+- `404 Not Found` - Asset ID doesn't exist
+
+## API Response Codes (RESTful Standard)
+
+| Endpoint | Method | Success | Error |
+|----------|--------|---------|-------|
+| `/assets` | POST | 201 Created | 400 Bad Request |
+| `/assets` | GET | 200 OK | - |
+| `/assets/:id` | GET | 200 OK | 404 Not Found |
+| `/assets/:id` | PUT | 200 OK | 404 Not Found |
+| `/assets/:id` | DELETE | 204 No Content | 404 Not Found |
+
 ## Database Schema
 
 **Table: asset**

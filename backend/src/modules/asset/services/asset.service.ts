@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Asset } from '../entities/asset.entity.js';
@@ -31,6 +31,10 @@ export class AssetService {
   }
 
   async delete(id: number): Promise<void> {
+    const asset = await this.findOne(id);
+    if (!asset) {
+      throw new NotFoundException(`Asset with ID ${id} not found`);
+    }
     await this.assetRepository.delete(id);
   }
 }

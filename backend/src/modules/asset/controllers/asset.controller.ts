@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, HttpCode } from '@nestjs/common';
 import { AssetService } from '../services/asset.service.js';
 import { CreateAssetDto } from '../dtos/create-asset.dto.js';
 import { UpdateAssetDto } from '../dtos/update-asset.dto.js';
@@ -29,6 +29,7 @@ export class AssetController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   async delete(@Param('id') id: string): Promise<void> {
     await this.assetService.delete(+id);
   }
