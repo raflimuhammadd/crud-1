@@ -1,4 +1,4 @@
-# Asset Management System - Fumindo Internship Test
+# Asset Management System
 
 ## Setup Instructions
 
