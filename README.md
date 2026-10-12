@@ -27,14 +27,8 @@ NODE_ENV=development
 
 3. **Create database and run migrations:**
 ```bash
-# Option A: Using Docker
+# Using Docker
 docker-compose up -d
-
-# Option B: Using local PostgreSQL
-# Create database manually:
-psql -U postgres -c "CREATE DATABASE asset_fumindo;"
-psql -U asset_fumindo -c "CREATE USER fumindo_test WITH PASSWORD 'fumindo_123';"
-psql -U asset_fumindo -c "ALTER DATABASE asset_fumindo OWNER TO fumindo_test;"
 ```
 
 4. **Run migrations:**
